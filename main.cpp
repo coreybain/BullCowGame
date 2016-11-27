@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include "FBallCowGame.hpp"
 
 
 //Introduce the game functions
@@ -15,6 +16,8 @@ void PrintInto();
 void PlayGame();
 std::string GetGuessAndPrint();
 bool AskToPlayAgain();
+
+FBullCowGame BCGame;
 
 //Entry point for app
 int main() {
@@ -33,9 +36,10 @@ int main() {
 
 void PlayGame() {
     
+    BCGame.Reset();
+    
     //Loop for number of turns for user guesses
-    constexpr int NUMBER_OF_TURNS = 5;
-    for (int count = 1; count <= NUMBER_OF_TURNS; count++) {
+    for (int count = 1; count <= BCGame.GetMaxTries(); count++) {
         
         std::string Guess = GetGuessAndPrint();
         std::cout << "Your guess was: " << Guess << std::endl;
@@ -61,8 +65,10 @@ void PrintInto() {
 
 std::string GetGuessAndPrint() {
     
+    int CurrentTry = BCGame.GetCurrentTry();
+    
     //    get the guess from the user
-    std::cout << "Enter your guess: ";
+    std::cout << "Try " << CurrentTry << ". Enter your guess: ";
     std::string Guess = "";
     getline(std::cin,Guess);
     
