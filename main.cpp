@@ -30,9 +30,12 @@ void PlayGame() {
     //Loop for number of turns for user guesses
     constexpr int NUMBER_OF_TURNS = 5;
     for (int count = 1; count <= NUMBER_OF_TURNS; count++) {
-        GetGuessAndPrint();
+        
+        string Guess = GetGuessAndPrint();
+        cout << "Your guess was: " << Guess << endl;
         cout << endl;
     }
+    
     return;
     
 }
@@ -40,7 +43,7 @@ void PlayGame() {
 //Introduce the game function implimentation
 void PrintInto() {
     
-    constexpr int WORD_LENGTH = 5;
+    constexpr int WORD_LENGTH = 9;
 
     cout << "This is the Bull Cow Game.\n";
     cout << "Can you guess the " << WORD_LENGTH;
@@ -56,9 +59,6 @@ string GetGuessAndPrint() {
     cout << "Enter your guess: ";
     string Guess = "";
     getline(cin,Guess);
-    
-    //    repeat the guess back to them
-    cout << "Your guess was: " << Guess << endl;
     
     return Guess;
     
